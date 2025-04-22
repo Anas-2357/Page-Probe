@@ -10,10 +10,10 @@ setInterval(() => {
         let loadSpeedStatus = '';
         let color = '';
 
-        if (response.loadTime < 1000) {
+        if (response.loadTime < 1500) {
             loadSpeedStatus = 'Good';
             color = 'green';
-        } else if (response.loadTime >= 1000 && response.loadTime < 2500) {
+        } else if (response.loadTime >= 1500 && response.loadTime < 3000) {
             loadSpeedStatus = 'Acceptable';
             color = 'orange';
         } else {
