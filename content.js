@@ -1,23 +1,29 @@
+let lcp;
+
+const po = new PerformanceObserver((entryList) => {
+  const entries = entryList.getEntries();
+  const lastEntry = entries[entries.length - 1];
+  lcp = lastEntry.startTime;
+});
+
+po.observe({ type: 'largest-contentful-paint', buffered: true });
+
 window.addEventListener('load', () => {
     setTimeout(() => {
-      if (window.performance && window.performance.timing) {
-        const timing = window.performance.timing;
+        const performance = window.performance;
   
-        const loadTime = timing.loadEventEnd - timing.navigationStart;
-  
-        if (loadTime > 0) {
-          const domCount = document.getElementsByTagName('*').length;
-  
-          chrome.runtime.sendMessage({
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;  
+        const domCount = document.getElementsByTagName('*').length;
+        const fcp = performance.getEntriesByName('first-contentful-paint')[0].startTime;
+
+        console.log(fcp);
+        console.log(lcp);
+
+        chrome.runtime.sendMessage({
             type: 'PERF_METRICS',
-            data: { loadTime, domCount }
-          });
-        } else {
-          console.error("Invalid load time:", loadTime);
-        }
-      } else {
-        console.error("Performance timing API not available.");
-      }
-    }, 500);  // Had to add this delay cause for some reason performance API isn't available at the begining
+            data: { loadTime, domCount, fcp, lcp}
+        });
+        
+    }, 0)  // Had to make this async cause for some reason performance API isn't available at the begining
   });
   

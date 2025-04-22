@@ -3,6 +3,8 @@ setInterval(() => {
         if(response.loadTime !== undefined){
             document.getElementById('loadTime').textContent = `Load Time: ${response.loadTime} ms`;
             document.getElementById('domCount').textContent = `DOM Elements: ${response.domCount}`;
+            document.getElementById('fcp').textContent = `FCP: ${response.fcp} ms`;
+            document.getElementById('lcp').textContent = `LCP: ${response.lcp} ms`;
         }
 
         let loadSpeedStatus = '';
