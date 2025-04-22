@@ -1,11 +1,15 @@
-setInterval(() => {
+const pollingInterval = setInterval(myTimer, 200);
+
+function myTimer() {
     chrome.runtime.sendMessage({ type: 'REQUEST_PERF_DATA' }, (response) => {
-        if(response.loadTime !== undefined){
+        if(response.loadTime === undefined){
+            return;
+        }
             document.getElementById('loadTime').textContent = `${response.loadTime} ms`;
             document.getElementById('domCount').textContent = `${response.domCount}`;
             document.getElementById('fcp').textContent = `${response.fcp} ms`;
             document.getElementById('lcp').textContent = `${response.lcp} ms`;
-        }
+        
 
         let loadSpeedStatus = '';
         let color = '';
@@ -19,14 +23,13 @@ setInterval(() => {
         } else {
             loadSpeedStatus = 'Bad';
             color = 'red';
-        }
-        
+        }        
 
         const loadSpeedElement = document.getElementById('loadSpeedStatus');
         loadSpeedElement.textContent = `${loadSpeedStatus}`;
         loadSpeedElement.style.color = color;
 
-
+        clearInterval(pollingInterval);
 
       });
-}, 200)
+}
