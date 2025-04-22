@@ -1,10 +1,10 @@
 setInterval(() => {
     chrome.runtime.sendMessage({ type: 'REQUEST_PERF_DATA' }, (response) => {
         if(response.loadTime !== undefined){
-            document.getElementById('loadTime').textContent = `Load Time: ${response.loadTime} ms`;
-            document.getElementById('domCount').textContent = `DOM Elements: ${response.domCount}`;
-            document.getElementById('fcp').textContent = `FCP: ${response.fcp} ms`;
-            document.getElementById('lcp').textContent = `LCP: ${response.lcp} ms`;
+            document.getElementById('loadTime').textContent = `${response.loadTime} ms`;
+            document.getElementById('domCount').textContent = `${response.domCount}`;
+            document.getElementById('fcp').textContent = `${response.fcp} ms`;
+            document.getElementById('lcp').textContent = `${response.lcp} ms`;
         }
 
         let loadSpeedStatus = '';
@@ -23,7 +23,7 @@ setInterval(() => {
         
 
         const loadSpeedElement = document.getElementById('loadSpeedStatus');
-        loadSpeedElement.textContent = `Load Speed: ${loadSpeedStatus}`;
+        loadSpeedElement.textContent = `${loadSpeedStatus}`;
         loadSpeedElement.style.color = color;
 
 

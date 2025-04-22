@@ -1,9 +1,9 @@
 let lcp;
 
 const po = new PerformanceObserver((entryList) => {
-  const entries = entryList.getEntries();
-  const lastEntry = entries[entries.length - 1];
-  lcp = lastEntry.startTime;
+    const entries = entryList.getEntries();
+    const lastEntry = entries[entries.length - 1];
+    lcp = lastEntry.startTime;
 });
 
 po.observe({ type: 'largest-contentful-paint', buffered: true });

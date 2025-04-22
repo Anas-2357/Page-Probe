@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Performance Data</title>
-  <style> 
-    body{
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        background-color: #333;
-        color: aliceblue;
-        text-align: center;
-    }
-    h3{
-        text-wrap: nowrap;
-        font-size: 1.2rem;
-    } 
-    p {
-        text-wrap: nowrap;
-        font-size: 0.9rem;
-    }
-    #loadSpeedStatus {        
-        transition: color 0.5s, background-color 0.3s;
-        font-weight: bolder;
-        font-size: 1.2rem;
-    }
-  </style>
-</head>
-<body>
-  <h3>Page Performance</h3>
-  <p id="loadSpeedStatus"></p>
-  <p id="domCount">Loading...</p>
-  <p id="loadTime">Loading...</p>
-  <p id="fcp">Loading...</p>
-  <p id="lcp">Loading...</p>
-  <script src="popup.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Performance Data</title>
+        <style>
+            body {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                background-color: #333;
+                color: aliceblue;
+                text-align: center;
+            }
+            h3 {
+                text-wrap: nowrap;
+                font-size: 1.2rem;
+            }
+            p {
+                text-wrap: nowrap;
+                font-size: 0.9rem;
+                cursor: pointer;
+            }
+            #loadSpeedStatus {
+                transition: color 0.5s;
+                font-weight: bolder;
+                font-size: 1.2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Page Performance</h3>
+        <p>
+            <span
+                class="tooltip"
+                title="Total time taken for the page to fully load. Measured from navigation start to load event end."
+                >Load Time: <span id="loadTime">Loading...</span></span
+            >
+        </p>
+        <p>
+            <span
+                class="tooltip"
+                title="Total number of elements in the DOM. Helps estimate complexity of the page."
+                >DOM Elements: <span id="domCount">Loading...</span></span
+            >
+        </p>
+        <p>
+            <span
+                class="tooltip"
+                title="First Contentful Paint: Time when the browser renders the first bit of content from the DOM. Indicates when users first see something."
+                >FCP: <span id="fcp">Loading...</span></span
+            >
+        </p>
+        <p>
+            <span
+                class="tooltip"
+                title="Largest Contentful Paint: Time when the largest visible element (like an image or big text block) finishes loading. Important for perceived performance."
+                >LCP: <span id="lcp">Loading...</span></span
+            >
+        </p>
+        <p id="loadSpeedStatusWrapper">
+            <span
+                class="tooltip"
+                title="Qualitative measure based on load time."
+                >Load Speed: <span id="loadSpeedStatus">Loading...</span></span
+            >
+        </p>
+
+        <script src="popup.js"></script>
+    </body>
 </html>
