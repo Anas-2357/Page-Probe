@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Performance Checker",
+    "name": "Page Probe",
     "version": "1.0",
     "permissions": ["activeTab"],
     "background": {

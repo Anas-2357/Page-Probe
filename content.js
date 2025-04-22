@@ -21,6 +21,6 @@ window.addEventListener('load', () => {
             data: { loadTime, domCount, fcp, lcp}
         });
         
-    }, 0)  // Had to make this async cause for some reason performance API isn't available at the begining
+    }, 0)  // Had to make this async cause for some reason load time isn't available initially in the performance API
   });
   
