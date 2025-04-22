@@ -16,9 +16,6 @@ window.addEventListener('load', () => {
         const domCount = document.getElementsByTagName('*').length;
         const fcp = performance.getEntriesByName('first-contentful-paint')[0].startTime;
 
-        console.log(fcp);
-        console.log(lcp);
-
         chrome.runtime.sendMessage({
             type: 'PERF_METRICS',
             data: { loadTime, domCount, fcp, lcp}
